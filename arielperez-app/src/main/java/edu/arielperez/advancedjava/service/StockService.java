@@ -1,5 +1,6 @@
 package edu.arielperez.advancedjava.service;
 
+
 import edu.arielperez.advancedjava.model.StockQuote;
 
 /**
