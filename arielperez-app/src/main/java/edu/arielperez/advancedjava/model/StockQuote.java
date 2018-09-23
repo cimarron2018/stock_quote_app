@@ -1,6 +1,8 @@
 package edu.arielperez.advancedjava.model;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -73,6 +75,19 @@ public class StockQuote {
 	 */
 	public void setDateRecorded(Date dateRecorded) {
 		this.dateRecorded = dateRecorded;
+	}
+
+	/**
+	 * Returns all the attributes of the StockQuote object: symbol, stockPrice,
+	 * dateRecorded
+	 * 
+	 * @return String including symbol, stockPrice, and dateRecorded
+	 */
+	@Override
+	public String toString() {
+
+		return "Symbol: " + stockSymbol + " Date: " + new SimpleDateFormat("MM-dd-yyyy").format(dateRecorded)
+				+ " Price: " + NumberFormat.getCurrencyInstance().format(stockPrice);
 	}
 
 }

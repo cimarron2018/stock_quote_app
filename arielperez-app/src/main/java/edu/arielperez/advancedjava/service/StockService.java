@@ -1,11 +1,14 @@
 package edu.arielperez.advancedjava.service;
 
+import java.util.Calendar;
+import java.util.List;
+
 import edu.arielperez.advancedjava.model.StockQuote;
 
 /**
  * This interface describes a simple API for getting stock data.
  */
-interface StockService {
+public interface StockService {
 	/**
 	 * Return the <CODE>StockData</CODE> for the given symbol for the given date.
 	 * Used to get history data for the stock.
@@ -16,4 +19,17 @@ interface StockService {
 	 * @return a StockQuote instance
 	 */
 	StockQuote getQuote(String symbol);
+
+	/**
+	 * 
+	 * Get a historical list of stock quotes for the provided symbol
+	 * 
+	 * @param symbol the stock symbol to search for
+	 * @param from   the date of the first stock quote
+	 * @param until  the date of the last stock quote
+	 * @return a list of StockQuote instances. One for each day in the range
+	 *         specified.
+	 */
+	List<StockQuote> getQuote(String symbol, Calendar from, Calendar until);
+
 }
