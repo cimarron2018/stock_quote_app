@@ -1,5 +1,6 @@
 package edu.arielperez.advancedjava.model;
 
+
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 import java.math.BigDecimal;

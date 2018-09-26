@@ -1,11 +1,12 @@
 package edu.arielperez.advancedjava.service;
 
+
 import edu.arielperez.advancedjava.model.StockQuote;
 
 /**
  * This interface describes a simple API for getting stock data.
  */
-interface StockService {
+public interface StockService {
 	/**
 	 * Return the <CODE>StockData</CODE> for the given symbol for the given date.
 	 * Used to get history data for the stock.
