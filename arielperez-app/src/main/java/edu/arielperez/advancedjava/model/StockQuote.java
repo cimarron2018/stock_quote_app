@@ -1,5 +1,6 @@
 package edu.arielperez.advancedjava.model;
 
+
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
