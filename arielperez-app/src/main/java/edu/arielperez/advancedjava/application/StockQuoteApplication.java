@@ -10,10 +10,10 @@ import edu.arielperez.advancedjava.model.StockQuote;
 import edu.arielperez.advancedjava.service.IntervalEnum;
 import edu.arielperez.advancedjava.service.StockService;
 import edu.arielperez.advancedjava.service.StockServiceFactory;
-
+import javax.validation.constraints.NotNull;
 public class StockQuoteApplication {
 
-	public static void main(String[] args) {
+	public static void main(@NotNull String[] args) {
 
 		String symbol = "";
 		Calendar fromDate = Calendar.getInstance();

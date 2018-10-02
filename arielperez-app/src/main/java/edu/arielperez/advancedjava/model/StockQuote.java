@@ -1,5 +1,7 @@
 package edu.arielperez.advancedjava.model;
 
+import org.apache.http.annotation.Immutable;
+
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -8,7 +10,7 @@ import java.util.Date;
 /**
  * This a simple container class.
  */
-
+@Immutable
 public class StockQuote {
 
 	private final String stockSymbol;
