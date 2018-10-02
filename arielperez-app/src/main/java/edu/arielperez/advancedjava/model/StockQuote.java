@@ -11,9 +11,9 @@ import java.util.Date;
 
 public class StockQuote {
 
-	private String stockSymbol;
-	private BigDecimal stockPrice;
-	private Date dateRecorded;
+	private final String stockSymbol;
+	private final BigDecimal stockPrice;
+	private final Date dateRecorded;
 
 	/**
 	 * Class constructor specifying the stockSymbol, stockPrice, and the
@@ -55,8 +55,8 @@ public class StockQuote {
 	}
 
 	/**
-	 * Returns all the attributes of the StockQuote object in a string: symbol, stockPrice,
-	 * dateRecorded
+	 * Returns all the attributes of the StockQuote object in a string: symbol,
+	 * stockPrice, dateRecorded
 	 * 
 	 * @return String including symbol, stockPrice, and dateRecorded
 	 */
