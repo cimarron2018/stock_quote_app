@@ -43,16 +43,12 @@ public class StockQuoteApplication {
 		// Call the Factory Class to get the service
 		StockService stockServiceImplementation = StockServiceFactory.getSockService();
 
-		toDate = new GregorianCalendar(2015, 2, 20);
-
 		// Get price now
 		StockQuote testStockPrice = stockServiceImplementation.getQuote(symbol);
 
 		// Display StockQuote
 		System.out.println("\nCurrent price for stock " + symbol);
 		System.out.println(testStockPrice.toString());
-
-		toDate = new GregorianCalendar(2015, 2, 20);
 
 		// Calls the getQuote method to pull price information between two dates for a
 		// stock symbol
@@ -64,7 +60,6 @@ public class StockQuoteApplication {
 			System.out.println(price.toString());
 		}
 
-		toDate = new GregorianCalendar(2015, 3, 20);
 		// Calls the getQuote method to pull price information between two dates for a
 		// stock symbol
 		List<StockQuote> listWeeklyPrices = stockServiceImplementation.getQuote(symbol, fromDate, toDate,
@@ -76,8 +71,6 @@ public class StockQuoteApplication {
 			System.out.println(price.toString());
 		}
 
-		toDate = new GregorianCalendar(2015, 6, 20);
-
 		List<StockQuote> listMonthlyPrices = stockServiceImplementation.getQuote(symbol, fromDate, toDate,
 				IntervalEnum.MONTHLY);
 
@@ -86,8 +79,6 @@ public class StockQuoteApplication {
 		for (StockQuote price : listMonthlyPrices) {
 			System.out.println(price.toString());
 		}
-
-		toDate = new GregorianCalendar(2018, 2, 20);
 
 		List<StockQuote> listYearlyPrices = stockServiceImplementation.getQuote(symbol, fromDate, toDate,
 				IntervalEnum.YEARLY);

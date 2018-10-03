@@ -2,6 +2,7 @@ package edu.arielperez.advancedjava.model;
 
 import org.apache.http.annotation.Immutable;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -11,7 +12,7 @@ import java.util.Date;
  * This a simple container class.
  */
 @Immutable
-public class StockQuote {
+public final class StockQuote {
 
 	private final String stockSymbol;
 	private final BigDecimal stockPrice;
@@ -26,7 +27,7 @@ public class StockQuote {
 	 * @param stockPriceValue   the price of the stock
 	 * @param dateRecordedValue as-of date
 	 */
-	public StockQuote(String stockSymbolValue, BigDecimal stockPriceValue, Date dateRecordedValue) {
+	public StockQuote(@NotNull String stockSymbolValue, @NotNull BigDecimal stockPriceValue, @NotNull Date dateRecordedValue) {
 		super();
 		this.stockSymbol = stockSymbolValue;
 		this.stockPrice = stockPriceValue;
