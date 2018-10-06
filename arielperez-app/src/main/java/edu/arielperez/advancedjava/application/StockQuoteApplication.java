@@ -22,7 +22,7 @@ public class StockQuoteApplication {
 		if (args.length < 3) {
 			System.out.println("Missing parameter(s): java StockQuoteApplication param1 param2 param3");
 			System.out.println("param1: symbol, param2: date mm/dd/yyyy, param3: date mm/dd/yyyy");
-			System.exit(0);
+			System.exit(1);
 		}
 
 		symbol = args[0];
@@ -31,13 +31,13 @@ public class StockQuoteApplication {
 			fromDate.setTime(new SimpleDateFormat("MM/dd/yyyy").parse(args[1]));
 		} catch (ParseException e1) {
 			System.out.println("Invalid date format. Correct format is mm/dd/yyyy");
-			System.exit(0);
+			System.exit(1);
 		}
 		try {
 			toDate.setTime(new SimpleDateFormat("MM/dd/yyyy").parse(args[2]));
 		} catch (ParseException e) {
 			System.out.println("Invalid date format. Correct format is mm/dd/yyyy");
-			System.exit(0);
+			System.exit(1);
 		}
 
 		// Call the Factory Class to get the service
