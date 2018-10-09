@@ -23,23 +23,33 @@ public class BasicStockServiceTest {
 	private StockService stockServiceImplementation;
 	private Calendar fromDate;
 	private Calendar toDate;
-	List<StockQuote> listPrices;
+	private String symbol = "APPL";
+	private List<StockQuote> listPrices;
 
 	@Before
 	public void setup() {
 		fromDate = new GregorianCalendar(2018, 0, 31);
 		toDate = new GregorianCalendar(2018, 1, 2);
-		stockServiceImplementation = StockServiceFactory.getSockService();
-		listPrices = stockServiceImplementation.getQuote("APP", fromDate, toDate);
-	}
+		stockServiceImplementation = new BasicStockService();
+        try {
+            listPrices = stockServiceImplementation.getQuote(symbol, fromDate, toDate);
+        } catch (StockServiceException e) {
+            e.printStackTrace();
+        }
+    }
 
 	/**
 	 * Test the getQuote method returns a BigDecimal
 	 */
 	@Test
 	public void testGetQuote() {
-		StockQuote testQuote = stockServiceImplementation.getQuote("LLL");
-		assertTrue(testQuote.getStockPrice() instanceof BigDecimal);
+        StockQuote testQuote = null;
+        try {
+            testQuote = stockServiceImplementation.getQuote(symbol);
+        } catch (StockServiceException e) {
+            e.printStackTrace();
+        }
+        assertTrue(testQuote.getStockPrice() instanceof BigDecimal);
 	}
 
 	@Test
@@ -59,7 +69,7 @@ public class BasicStockServiceTest {
 
 	@Test
 	public void testGetQuoteDateStockSymbol() {
-		assertTrue(listPrices.get(0).getStockSymbol() == "APP");
+		assertTrue(listPrices.get(0).getStockSymbol().equalsIgnoreCase(symbol));
 	}
 
 }

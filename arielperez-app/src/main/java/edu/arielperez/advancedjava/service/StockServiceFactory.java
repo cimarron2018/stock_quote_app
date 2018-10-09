@@ -22,7 +22,8 @@ public class StockServiceFactory {
 	 */
 	public static StockService getSockService() {
 
-		return new BasicStockService();
+		// return new BasicStockService();
+		return new DatabaseStockService();
 
 	}
 }

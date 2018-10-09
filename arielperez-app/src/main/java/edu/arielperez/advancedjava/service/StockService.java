@@ -19,7 +19,7 @@ public interface StockService {
 	 *
 	 * @return a StockQuote instance
 	 */
-	StockQuote getQuote(String symbol);
+	StockQuote getQuote(String symbol) throws StockServiceException;
 
 	/**
 	 * 
@@ -31,7 +31,7 @@ public interface StockService {
 	 * @return a list of StockQuote instances. One for each day in the range
 	 *         specified.
 	 */
-	List<StockQuote> getQuote(String symbol, Calendar from, Calendar until);
+	List<StockQuote> getQuote(String symbol, Calendar from, Calendar until) throws StockServiceException;
 
 	/**
 	 * Get a historical list of stock quotes for the provided symbol This method
@@ -45,6 +45,6 @@ public interface StockService {
 	 * @return a list of StockQuote instances. One for each day in the range
 	 *         specified.
 	 */
-	List<StockQuote> getQuote(String symbol, Calendar from, Calendar until, IntervalEnum interval);
+	List<StockQuote> getQuote(String symbol, Calendar from, Calendar until, IntervalEnum interval) throws StockServiceException;
 
 }
