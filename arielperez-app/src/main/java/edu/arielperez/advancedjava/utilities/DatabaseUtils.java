@@ -17,7 +17,7 @@ public class DatabaseUtils {
 
 	// JDBC driver name and database URL
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mysql://localhost:3306/stocks?autoReconnect=true&useSSL=false&relaxAutoCommit=true";
+	private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/stocks?autoReconnect=true&useSSL=false&relaxAutoCommit=true";
 
 	// Database credentials
 	private static final String USER = "aperez";
