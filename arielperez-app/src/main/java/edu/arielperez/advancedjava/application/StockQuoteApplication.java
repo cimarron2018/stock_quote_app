@@ -11,6 +11,8 @@ import edu.arielperez.advancedjava.service.IntervalEnum;
 import edu.arielperez.advancedjava.service.StockService;
 import edu.arielperez.advancedjava.service.StockServiceException;
 import edu.arielperez.advancedjava.service.StockServiceFactory;
+import edu.arielperez.advancedjava.utilities.DatabaseInitializationException;
+import edu.arielperez.advancedjava.utilities.DatabaseUtils;
 
 import javax.validation.constraints.NotNull;
 
@@ -46,6 +48,14 @@ public class StockQuoteApplication {
 
         // Call the Factory Class to get the service
         StockService stockServiceImplementation = StockServiceFactory.getSockService();
+
+        // Initialize database by running a script that will create a table and insert records
+        try {
+            DatabaseUtils.initializeDatabase("/Users/aperez/Documents/GitHub/stock_quote_app/arielperez-app/src/main/sql/stocks_db_initialization.sql");
+        } catch (DatabaseInitializationException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
 
         // Get price now
         StockQuote testStockPrice = null;
