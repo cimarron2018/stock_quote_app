@@ -31,6 +31,8 @@ jobs:
       - checkout:
           path: ~/java_class
 
+      - run: sudo apt install -y mysql-client
+
       # Download and cache dependencies
       - restore_cache:
           keys:
