@@ -20,6 +20,8 @@ jobs:
         - MYSQL_DATABASE: stocks
         - MYSQL_USER: aperez
         - MYSQL_PASSWORD: locura
+        - DB_HOST=127.0.0.1
+        - DB_PORT=3306
     
     working_directory: ~/java_class/arielperez-app
 
