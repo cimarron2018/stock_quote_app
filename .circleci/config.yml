@@ -13,15 +13,12 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
-      - image: circleci/mysql:latest-ram
+      - image: circleci/mysql:5.7
         environment:
-        - MYSQL_ALLOW_EMPTY_PASSWORD: true
-        #- MYSQL_ROOT_PASSWORD: password
+        - MYSQL_ROOT_PASSWORD: password
         - MYSQL_DATABASE: stocks
         - MYSQL_USER: aperez
         - MYSQL_PASSWORD: locura
-        - DB_HOST=127.0.0.1
-        - DB_PORT=3306
     
     working_directory: ~/java_class/arielperez-app
 
@@ -48,10 +45,6 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-
-      - run: 
-          name: Mysql statement
-          command: mysql -h 127.0.0.1 -u root -e "ALTER USER 'aperez'@'localhost' IDENTIFIED WITH mysql_native_password BY 'locura'";
         
       # run tests!
       - run: mvn test
