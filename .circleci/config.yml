@@ -15,7 +15,8 @@ jobs:
       # - image: circleci/postgres:9.4
       - image: circleci/mysql:latest-ram
         environment:
-        - MYSQL_ROOT_PASSWORD: password
+        - MYSQL_ALLOW_EMPTY_PASSWORD: yes
+        #- MYSQL_ROOT_PASSWORD: password
         - MYSQL_DATABASE: stocks
         - MYSQL_USER: aperez
         - MYSQL_PASSWORD: locura
@@ -48,7 +49,7 @@ jobs:
 
       - run: 
           name: Mysql statement
-          command: mysql -h 127.0.0.1 -u root -p password -e "ALTER USER 'aperez'@'localhost' IDENTIFIED WITH mysql_native_password BY 'locura'";
+          command: mysql -h 127.0.0.1 -u root -e "ALTER USER 'aperez'@'localhost' IDENTIFIED WITH mysql_native_password BY 'locura'";
         
       # run tests!
       - run: mvn test
