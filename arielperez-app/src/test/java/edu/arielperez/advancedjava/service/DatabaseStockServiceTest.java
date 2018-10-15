@@ -1,7 +1,10 @@
 package edu.arielperez.advancedjava.service;
 
 import edu.arielperez.advancedjava.model.StockQuote;
+import edu.arielperez.advancedjava.utilities.DatabaseInitializationException;
+import edu.arielperez.advancedjava.utilities.DatabaseUtils;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -15,36 +18,46 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * JUNIT test for DatabaseStockService class
- * 
- * @author aperez
  *
+ * @author aperez
  */
 public class DatabaseStockServiceTest {
 
-	private StockService stockServiceImplementation = null;
-	private Calendar fromDate = Calendar.getInstance();
-	private Calendar toDate = Calendar.getInstance();
-	private String symbol = "APPL";
-	private List<StockQuote> listPrices = null;
-	SimpleDateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
+    private StockService stockServiceImplementation = null;
+    private Calendar fromDate = Calendar.getInstance();
+    private Calendar toDate = Calendar.getInstance();
+    private String symbol = "APPL";
+    private List<StockQuote> listPrices = null;
+    SimpleDateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
 
-	@Before
-	public void setup() {
-		stockServiceImplementation = new DatabaseStockService();
+    @BeforeClass
+    static public void firstSetup() {
+        // Initialize database by running a script that will create a table and insert records
+        try {
+            DatabaseUtils.initializeDatabase("/Users/aperez/Documents/GitHub/stock_quote_app/arielperez-app/src/main/sql/stocks_db_initialization.sql");
+        } catch (DatabaseInitializationException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
 
-		try {
-			fromDate.setTime(dateFormat.parse("1/1/2000"));
-		} catch (ParseException e1) {
-			System.out.println("Invalid date format. Correct format is mm/dd/yyyy");
-		}
-		try {
-			toDate.setTime(dateFormat.parse("1/8/2000"));
-		} catch (ParseException e) {
-			System.out.println("Invalid date format. Correct format is mm/dd/yyyy");
-		}
+    @Before
+    public void setup() {
+        stockServiceImplementation = new DatabaseStockService();
+
+        try {
+            fromDate.setTime(dateFormat.parse("1/1/2000"));
+        } catch (ParseException e1) {
+            System.out.println("Invalid date format. Correct format is mm/dd/yyyy");
+        }
+        try {
+            toDate.setTime(dateFormat.parse("1/8/2000"));
+        } catch (ParseException e) {
+            System.out.println("Invalid date format. Correct format is mm/dd/yyyy");
+        }
 
 
-		try {
+        try {
             listPrices = stockServiceImplementation.getQuote(symbol, fromDate, toDate);
         } catch (StockServiceException e) {
             e.printStackTrace();
@@ -52,11 +65,11 @@ public class DatabaseStockServiceTest {
 
     }
 
-	/**
-	 * Test the getQuote method returns a BigDecimal
-	 */
-	@Test
-	public void testGetQuote() {
+    /**
+     * Test the getQuote method returns a BigDecimal
+     */
+    @Test
+    public void testGetQuote() {
         StockQuote testQuote = null;
         try {
             testQuote = stockServiceImplementation.getQuote(symbol);
@@ -64,27 +77,27 @@ public class DatabaseStockServiceTest {
             e.printStackTrace();
         }
         assertTrue(testQuote.getStockPrice() instanceof BigDecimal);
-	}
+    }
 
-	@Test
-	public void testGetQuoteDate() {
-		assertTrue(listPrices instanceof List<?>);
-	}
+    @Test
+    public void testGetQuoteDate() {
+        assertTrue(listPrices instanceof List<?>);
+    }
 
-	@Test
-	public void testGetQuoteDateFromDate() {
-	    fromDate.add(Calendar.DATE, -1);
-		assertTrue(listPrices.get(1).getDateRecorded().after(fromDate.getTime()));
-	}
+    @Test
+    public void testGetQuoteDateFromDate() {
+        fromDate.add(Calendar.DATE, -1);
+        assertTrue(listPrices.get(1).getDateRecorded().after(fromDate.getTime()));
+    }
 
-	@Test
-	public void testGetQuoteDateToDate() {
-		assertTrue(listPrices.get(listPrices.size()-1).getDateRecorded().before(toDate.getTime()));
-	}
+    @Test
+    public void testGetQuoteDateToDate() {
+        assertTrue(listPrices.get(listPrices.size() - 1).getDateRecorded().before(toDate.getTime()));
+    }
 
-	@Test
-	public void testGetQuoteDateStockSymbol() {
-		assertTrue(listPrices.get(0).getStockSymbol().equalsIgnoreCase(symbol));
-	}
+    @Test
+    public void testGetQuoteDateStockSymbol() {
+        assertTrue(listPrices.get(0).getStockSymbol().equalsIgnoreCase(symbol));
+    }
 
 }
