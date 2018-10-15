@@ -36,7 +36,7 @@ public class DatabaseStockServiceTest {
         // Initialize database by running a script that will create a table and insert records
         File sqlFile = new File("stocks_db_initialization.sql");
         try {
-            DatabaseUtils.initializeDatabase(sqlFile.getAbsoluteFile().toString());
+            DatabaseUtils.initializeDatabase(sqlFile.getAbsolutePath().toString());
         } catch (DatabaseInitializationException e) {
             e.printStackTrace();
             System.exit(1);
