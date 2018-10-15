@@ -48,7 +48,7 @@ jobs:
 
       - run: 
           name: Mysql statement
-          command: mysql -h 127.0.0.1 -u root -e "ALTER USER 'aperez'@'localhost' IDENTIFIED WITH mysql_native_password BY 'locura';
+          command: mysql -h 127.0.0.1 -u root -e "ALTER USER 'aperez'@'localhost' IDENTIFIED WITH mysql_native_password BY 'locura'";
         
       # run tests!
       - run: mvn test
