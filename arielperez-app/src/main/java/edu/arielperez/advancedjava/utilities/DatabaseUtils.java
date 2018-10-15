@@ -2,10 +2,8 @@ package edu.arielperez.advancedjava.utilities;
 
 import com.ibatis.common.jdbc.ScriptRunner;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -59,7 +57,8 @@ public class DatabaseUtils {
 		try {
 			connection = getConnection();
 			ScriptRunner runner = new ScriptRunner(connection, false, false);
-			InputStream inputStream = new FileInputStream(initializationScript);
+
+            InputStream inputStream = new FileInputStream(initializationScript);
 
 			InputStreamReader reader = new InputStreamReader(inputStream);
 

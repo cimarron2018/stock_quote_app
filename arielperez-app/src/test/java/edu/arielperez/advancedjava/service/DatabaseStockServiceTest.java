@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,8 +34,9 @@ public class DatabaseStockServiceTest {
     @BeforeClass
     static public void firstSetup() {
         // Initialize database by running a script that will create a table and insert records
+        File sqlFile = new File("src/main/java/edu/arielperez/advancedjava/sql/stocks_db_initialization.sql");
         try {
-            DatabaseUtils.initializeDatabase("/Users/aperez/Documents/GitHub/stock_quote_app/arielperez-app/src/main/sql/stocks_db_initialization.sql");
+            DatabaseUtils.initializeDatabase(sqlFile.getAbsoluteFile().toString());
         } catch (DatabaseInitializationException e) {
             e.printStackTrace();
             System.exit(1);
