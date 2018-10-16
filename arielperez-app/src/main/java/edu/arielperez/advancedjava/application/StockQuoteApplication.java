@@ -55,7 +55,7 @@ public class StockQuoteApplication {
         // File sqlFile = new File("stocks_db_initialization.sql");
 
         try {
-            DatabaseUtils.initializeDatabase("./java_class/arielperez-app/src/main/sql/stocks_db_initialization.sql");
+            DatabaseUtils.initializeDatabase(DatabaseUtils.initializationFile);
         } catch (DatabaseInitializationException e) {
             e.printStackTrace();
             System.exit(1);
