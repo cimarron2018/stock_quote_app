@@ -25,7 +25,7 @@ public interface PersonService {
      * @throws PersonServiceException if a service can not read or write the requested data
      *                                    or otherwise perform the requested operation.
      */
-    //void addOrUpdatePerson(Person person) throws PersonServiceException;
+    void addOrUpdatePerson(Person person) throws PersonServiceException;
 
     /**
      * Get a list of all a person's stocks.
@@ -34,16 +34,16 @@ public interface PersonService {
      * @throws PersonServiceException if a service can not read or write the requested data
      *                                    or otherwise perform the requested operation.
      */
-    //List<String> getStocks(Person person) throws PersonServiceException;
+    List<String> getStocks(Person person) throws PersonServiceException;
 
     /**
-     * Assign a hobby to a person.
+     * Assign a stock to a person.
      *
      * @param stock  The stock to assign
      * @param person The person to assign the stock too.
      * @throws PersonServiceException if a service can not read or write the requested data
      *                                    or otherwise perform the requested operation.
      */
-    //public void addHobbyToPerson(String stock, Person person) throws PersonServiceException;
+    public void addStockToPerson(String stock, Person person) throws PersonServiceException;
 
 }

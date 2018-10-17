@@ -33,7 +33,7 @@ public class PersonStocks {
      * @param stock_symbol the stock symbol to associate the person with
      */
     public PersonStocks(Person person, String stock_symbol) {
-        setStockSymbol(stock_symbol);
+        setStock(stock_symbol);
         setPerson(person);
     }
 
@@ -81,7 +81,7 @@ public class PersonStocks {
      */
     @Basic
     @Column(name = "stock_symbol", nullable = false, insertable = true, updatable = true, length = 4)
-    public String getStockSymbol() {
+    public String getStock() {
         return stockSymbol;
     }
 
@@ -90,7 +90,7 @@ public class PersonStocks {
      *
      * @param stock_symbol a String value
      */
-    public void setStockSymbol(String stock_symbol) {
+    public void setStock(String stock_symbol) {
         this.stockSymbol = stock_symbol;
     }
 
