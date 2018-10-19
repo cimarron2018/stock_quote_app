@@ -22,14 +22,6 @@ public class DatabaseUtils {
     // Initialization script file
     public static final String initializationFile = "./src/main/resources/stocks_db_initialization.sql";
 
-    // JDBC driver name and database URL
-	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mysql://localhost:3306/stocks?autoReconnect=true&useSSL=false&relaxAutoCommit=true";
-
-	// Database credentials
-	private static final String USER = "aperez";
-	private static final String PASS = "locura";
-
 	private static SessionFactory sessionFactory;
 	private static Configuration configuration;
 
