@@ -25,7 +25,7 @@ public class PersonTest {
     }
 
     @Test
-    public void testHobbySettersAndGetters() {
+    public void testPersonSettersAndGetters() {
         Person person = createPerson();
         int id = 10;
         person.setId(id);
