@@ -17,8 +17,8 @@ jobs:
         environment:
         - MYSQL_ROOT_PASSWORD: password
         - MYSQL_DATABASE: stocks
-        - MYSQL_USER: aperez
-        - MYSQL_PASSWORD: locura
+        - MYSQL_USER: monty
+        - MYSQL_PASSWORD: some_pass
     
     working_directory: ~/java_class/arielperez-app
 
