@@ -20,7 +20,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
 public class DatabaseUtils {
 
     // Initialization script file
-    public static final String initializationFile = "/home/circleci/java_class/arielperez-app/target/classes/stocks_db_initialization.sql";
+    public static final String initializationFile = "./src/main/resources/stocks_db_initialization.sql";
 
     // JDBC driver name and database URL
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
