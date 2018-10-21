@@ -6,12 +6,12 @@ package edu.arielperez.advancedjava.service;
  * 
  *
  */
-public class StockServiceFactory {
+public class ServiceFactory {
 
 	/**
 	 * Constructor is private
 	 */
-	private StockServiceFactory() {
+	private ServiceFactory() {
 
 	}
 
@@ -26,4 +26,17 @@ public class StockServiceFactory {
 		return new DatabaseStockService();
 
 	}
+
+	/**
+	 * Returns an implementation of the PersonService interface
+	 *
+	 * @return a PersonService implementation
+	 */
+	public static PersonService getPersonService() {
+
+		// return new BasicStockService();
+		return new DatabasePersonService();
+
+	}
+
 }
