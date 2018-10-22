@@ -39,4 +39,16 @@ public class ServiceFactory {
 
 	}
 
+    /**
+     * Returns an implementation of the PersonService interface
+     *
+     * @return a PersonService implementation
+     */
+    public static QuoteService getQuoteService() {
+
+        // return new BasicStockService();
+        return new DatabaseQuoteService();
+
+    }
+
 }

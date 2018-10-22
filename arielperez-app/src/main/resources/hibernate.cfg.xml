@@ -19,6 +19,7 @@
 
         <mapping class="edu.arielperez.advancedjava.model.Person"/>
         <mapping class="edu.arielperez.advancedjava.model.PersonStocks"/>
+        <mapping class="edu.arielperez.advancedjava.model.Quote"/>
 
 
     </session-factory>
