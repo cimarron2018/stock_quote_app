@@ -12,19 +12,19 @@ import org.junit.Test;
 import edu.arielperez.advancedjava.model.StockQuote;
 
 /**
- * JUnit tests for StockServiceFactory class
+ * JUnit tests for ServiceFactory class
  *
  * @author aperez
  *
  */
-public class StockServiceFactoryTest {
+public class ServiceFactoryTest {
 
     private StockService testStockService;
     private String symbol = "APPL";
 
     @Before
     public void setup() {
-        testStockService = StockServiceFactory.getSockService();
+        testStockService = ServiceFactory.getSockService();
     }
 
     @Test

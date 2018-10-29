@@ -13,7 +13,13 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
-
+      - image: circleci/mysql:5.7
+        environment:
+        - MYSQL_ROOT_PASSWORD: password
+        - MYSQL_DATABASE: stocks
+        - MYSQL_USER: monty
+        - MYSQL_PASSWORD: some_pass
+    
     working_directory: ~/java_class/arielperez-app
 
     environment:
@@ -23,6 +29,8 @@ jobs:
     steps:
       - checkout:
           path: ~/java_class
+
+      - run: sudo apt install -y mysql-client
 
       # Download and cache dependencies
       - restore_cache:
