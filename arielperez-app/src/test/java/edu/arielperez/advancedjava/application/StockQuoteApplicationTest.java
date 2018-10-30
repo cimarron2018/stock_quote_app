@@ -41,7 +41,7 @@ public class StockQuoteApplicationTest {
 
     @Test
     public void noSystemExit() {
-        StockQuoteApplication.main(new String[]{"APPL","1/1/2000","1/8/2000"});
+        StockQuoteApplication.main(new String[]{"AAPL","1/1/2000","1/8/2000"});
         //passes
     }
 

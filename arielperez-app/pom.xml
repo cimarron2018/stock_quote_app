@@ -92,5 +92,10 @@
             <artifactId>jaxb-core</artifactId>
             <version>2.2.11</version>
         </dependency>
+        <dependency>
+            <groupId>com.yahoofinance-api</groupId>
+            <artifactId>YahooFinanceAPI</artifactId>
+            <version>3.14.0</version>
+        </dependency>
     </dependencies>
 </project>

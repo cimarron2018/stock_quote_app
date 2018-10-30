@@ -23,7 +23,8 @@ public class ServiceFactory {
 	public static StockService getSockService() {
 
 		// return new BasicStockService();
-		return new DatabaseStockService();
+		//return new DatabaseStockService();
+		return new YahooStockService();
 
 	}
 

@@ -20,7 +20,7 @@ import edu.arielperez.advancedjava.model.StockQuote;
 public class ServiceFactoryTest {
 
     private StockService testStockService;
-    private String symbol = "APPL";
+    private String symbol = "AAPL";
 
     @Before
     public void setup() {
