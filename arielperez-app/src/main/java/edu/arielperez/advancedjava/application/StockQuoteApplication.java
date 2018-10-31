@@ -3,14 +3,13 @@ package edu.arielperez.advancedjava.application;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
+import edu.arielperez.advancedjava.model.Person;
 import edu.arielperez.advancedjava.model.StockQuote;
-import edu.arielperez.advancedjava.service.IntervalEnum;
-import edu.arielperez.advancedjava.service.StockService;
-import edu.arielperez.advancedjava.service.StockServiceException;
-import edu.arielperez.advancedjava.service.StockServiceFactory;
+import edu.arielperez.advancedjava.service.*;
+import edu.arielperez.advancedjava.utilities.DatabaseInitializationException;
+import edu.arielperez.advancedjava.utilities.DatabaseUtils;
 
 import javax.validation.constraints.NotNull;
 
@@ -45,7 +44,17 @@ public class StockQuoteApplication {
         }
 
         // Call the Factory Class to get the service
-        StockService stockServiceImplementation = StockServiceFactory.getSockService();
+        StockService stockServiceImplementation = ServiceFactory.getSockService();
+
+        // Initialize database by running a script that will create a table and insert records
+        // File sqlFile = new File("stocks_db_initialization.sql");
+
+        try {
+            DatabaseUtils.initializeDatabase(DatabaseUtils.initializationFile);
+        } catch (DatabaseInitializationException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
 
         // Get price now
         StockQuote testStockPrice = null;
@@ -77,6 +86,18 @@ public class StockQuoteApplication {
             System.out.println(price.toString());
         }
 
+        // DatabasePersonService - get list of persons
+/*        PersonService personServiceImplementation = ServiceFactory.getPersonService();
+        List<Person> listPersons = null;
+        try {
+            listPersons = personServiceImplementation.getPerson();
+        } catch (PersonServiceException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        for (Person person : listPersons) {
+            System.out.println(person.toString());
+        }*/
     }
 
 }

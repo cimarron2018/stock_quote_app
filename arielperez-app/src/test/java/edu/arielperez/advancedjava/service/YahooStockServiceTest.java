@@ -7,44 +7,31 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.File;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
 /**
- * JUNIT test for DatabaseStockService class
+ * JUNIT test for YahooStockService class
  *
  * @author aperez
  */
-public class DatabaseStockServiceTest {
+public class YahooStockServiceTest {
 
     private StockService stockServiceImplementation = null;
     private Calendar fromDate = Calendar.getInstance();
     private Calendar toDate = Calendar.getInstance();
-    private String symbol = "APPL";
+    private String symbol = "AAPL";
     private List<StockQuote> listPrices = null;
     SimpleDateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
 
-    @BeforeClass
-    static public void firstSetup() {
-        // Initialize database by running a script that will create a table and insert records
-        try {
-            DatabaseUtils.initializeDatabase(DatabaseUtils.initializationFile);
-        } catch (DatabaseInitializationException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-    }
-
     @Before
     public void setup() {
-        stockServiceImplementation = new DatabaseStockService();
+        stockServiceImplementation = new YahooStockService();
 
         try {
             fromDate.setTime(dateFormat.parse("1/1/2000"));
